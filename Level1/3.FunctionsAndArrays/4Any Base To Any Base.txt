@@ -1,0 +1,41 @@
+//Any Base To Any Base
+import java.util.*;
+
+public class Main {
+
+  public static void main(String[] args) {
+    Scanner scn = new Scanner(System.in);
+    int n = scn.nextInt();
+    int sourceBase = scn.nextInt();
+    int  destBase = scn.nextInt();
+    int ans = getValueIndecimal(n,sourceBase);
+    int final_ans=getValueInBase(ans,destBase);
+    System.out.println(final_ans);
+  }
+  public static int getValueIndecimal(int n, int b) {
+
+    // write your code here
+    int temp = 1;
+    int sum = 0;
+    while (n > 0) {
+      int dig = n % 10;
+      n = n / 10;
+      sum += dig * temp;
+      temp *= b;
+    }
+    return sum;
+  }
+  public static int getValueInBase(int n, int b) {
+    // write code here
+    int temp = 1;
+    int sum = 0;
+    while (n > 0) {
+      int dig = n % b;
+      n = n / b;
+      sum += dig * temp;
+      temp *= 10;
+    }
+    return sum;
+
+  }
+}
