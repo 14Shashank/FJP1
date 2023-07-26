@@ -1,0 +1,40 @@
+// Remove Primes
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    
+    public static boolean IsPrime(int num){
+        boolean checkprime= true;
+        for(int div=2; div*div<=num; div++){
+            if(num % div == 0){
+                checkprime= false;
+                break;
+            }
+        }
+        return checkprime;
+    }
+
+	public static void solution(ArrayList<Integer> al){
+		// write your code here
+		for(int i=al.size()-1; i>=0; i--){
+		    int num = al.get(i);
+		    boolean isprime = IsPrime(num);
+		    if(isprime == true){
+		        al.remove(i);
+		    }
+		}
+		
+	}
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		int n = scn.nextInt();
+		ArrayList<Integer> al = new ArrayList<>();
+		for(int i = 0 ; i < n; i++){
+			al.add(scn.nextInt());
+		}
+		solution(al);
+		System.out.println(al);
+	}
+
+}

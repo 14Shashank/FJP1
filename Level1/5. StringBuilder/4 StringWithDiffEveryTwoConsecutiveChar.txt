@@ -1,0 +1,28 @@
+// String With Difference Of Every Two Consecutive Characters
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static String solution(String str){
+		// write your code here
+		StringBuilder sb = new StringBuilder();
+		for(int i=0; i<str.length()-1; i++){
+		    char fi = str.charAt(i);
+		    char li = str.charAt(i+1);
+		    int diff = li -fi;
+		    sb.append(fi);
+		    sb.append(diff);
+		}
+		sb.append(str.charAt(str.length()-1));
+
+		return sb.toString();
+	}
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		String str = scn.next();
+		System.out.println(solution(str));
+	}
+
+}

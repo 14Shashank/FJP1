@@ -1,0 +1,45 @@
+// Print All Palindromic Substrings
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void solution(String str){
+		//write your code here
+		for(int i=0; i<str.length(); i++){
+		    for(int j=i+1; j<=str.length(); j++){
+		        String sub = str.substring(i,j);
+		        boolean ispalindrome = IsPalindrome(sub);
+		        if(ispalindrome == true){
+		            System.out.println(sub);
+		        }
+		    }
+		}
+		
+	}
+	
+	public static boolean IsPalindrome(String str){
+	    int left =0;
+	    int right= str.length()-1;
+	    boolean check =true;
+	    while(left<right){
+	        char leftchar = str.charAt(left);
+	        char rightchar = str.charAt(right);
+	        if(leftchar != rightchar){
+	            check= false;
+	            break;
+	        }
+	        left++;
+	        right--;
+	    }
+	    return check;
+	}
+
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		String str = scn.next();
+		solution(str);
+	}
+
+}
