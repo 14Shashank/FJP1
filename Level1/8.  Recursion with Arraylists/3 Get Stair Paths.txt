@@ -1,0 +1,50 @@
+// Get Stair Paths
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner scn = new Scanner(System.in);
+        int n= scn.nextInt();
+        ArrayList<String> rres = getStairPaths(n);
+        System.out.print(rres);
+    }
+
+    public static ArrayList<String> getStairPaths(int n) {
+        if(n == 0){
+            ArrayList<String> bres = new ArrayList<>();
+            bres.add("");
+            return bres;
+        }else if(n < 0){
+            ArrayList<String> bres = new ArrayList<>();
+            return bres;
+        }
+        ArrayList<String> getpathsnm1 = getStairPaths(n-1);
+        ArrayList<String> getpathsnm2 = getStairPaths(n-2);
+        ArrayList<String> getpathsnm3 = getStairPaths(n-3);
+        
+        ArrayList<String> getallpaths = new ArrayList<>();
+        
+        for(String path : getpathsnm1){
+            String paths = "1"+path;
+            getallpaths.add(paths);
+        }
+        
+        
+        for(String path : getpathsnm2){
+            String paths = "2"+path;
+            getallpaths.add(paths);
+        }
+        
+        
+        for(String path : getpathsnm3){
+            String paths = "3"+path;
+            getallpaths.add(paths);
+        }
+        
+        return getallpaths;
+    }
+
+}
