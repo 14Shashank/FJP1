@@ -1,0 +1,49 @@
+// Print Encodings
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner scn = new Scanner(System.in);
+        String str = scn.nextLine();
+        printEncodings(str , "");
+
+    }
+
+    public static void printEncodings(String str , String asf) {
+        if(str.length() == 0){
+            System.out.println(asf);
+            return;
+        }else if(str.length() == 1){
+            String ch = str.substring(0,1);
+            if(ch.equals("0")){
+                return;
+            }
+            int num_ch = Integer.parseInt(ch);
+            String alp_ch = (char)('a' + num_ch -1) + "";
+            System.out.println(asf + alp_ch);
+        }else{
+            String ch = str.substring(0,1);
+            String roq = str.substring(1);
+            if(ch.equals("0")){
+                return;
+            }
+            int num_ch = Integer.parseInt(ch);
+            String alp_ch = (char)('a' + num_ch -1) + "";
+            printEncodings(roq , asf + alp_ch);
+            
+            
+            String ch02 = str.substring(0,2);
+            int num_ch02 = Integer.parseInt(ch02);
+            String roq02 = str.substring(2);
+            if(num_ch02 > 26){
+                return;
+            }
+            String alp_ch02 = (char)('a' + num_ch02 -1) + "";
+            printEncodings(roq02 , asf + alp_ch02);
+        }
+    }
+
+}
